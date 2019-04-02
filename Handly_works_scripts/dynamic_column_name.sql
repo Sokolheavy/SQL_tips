@@ -14,19 +14,23 @@ set @text='select f.id
    begin
    set @j=convert(varchar(max),@k) 
    set @query = ',f.B'+@j+'OpDate	
-				,f.FPDMob'+@j+'Date
-        ,coalesce(f.Mob'+@j+'_limit_clim ,f1.Mob'+@j+'_limit_clim) Mob'+@j+'_limit_clim
-				,coalesce(f.Mob'+@j+'_Limit,f1.Mob'+@j+'_Limit) Mob'+@j+'_Limit'
+	         ,f.FPDMob'+@j+'Date
+                 ,coalesce(f.Mob'+@j+'_limit_clim ,f1.Mob'+@j+'_limit_clim) Mob'+@j+'_limit_clim
+		 ,coalesce(f.Mob'+@j+'_Limit,f1.Mob'+@j+'_Limit) Mob'+@j+'_Limit'
         
    set @k=@k+1
    set @text= @text+ @query
    end
-   set @text =@text + '
- f.Decision_Limit	,f.group_new	,f.subgroup_new	,f.Сведение	,f.Value_NBSM_Parameter	,f.Point_of_sale
-    into Trash.dbo.test_fpd_rest
-    from Trash.dbo.tfpd12_rest f '
+   set @text =@text + 'f.Decision_Limit, 
+                       f.group_new,
+		       f.subgroup_new,
+		       f.Сведение,
+		       f.Value_NBSM_Parameter,
+		       f.Point_of_sale
+    into Trash_second
+    from Trash._initial f '
 
 
 	exec( @text) 
 
-	--select * from  Trash.dbo.test_fpd_rest
+	--select * from  Trash_second
