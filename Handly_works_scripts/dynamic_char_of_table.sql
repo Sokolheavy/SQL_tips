@@ -9,7 +9,7 @@ drop table #t
 
 SELECT Product as Product
 	  into #t
-  FROM [B2].[dbo].[dwh_La]
+  FROM table_name
   WHERE [portfolioType] ='Not Define'
   and product not like '%8%кл%'
 and product not like '%IsCard%'
@@ -39,7 +39,7 @@ SELECT Product as Product
 	  ,'   '+format(MAX([datebegin]),'dd-MM-yyyy') AS 'Max_datebegin'
      -- ,'   '+convert(varchar(10),MIN([datebegin])) AS 'Min_datebegin'
 	 -- ,'   '+convert(varchar(10),MAX([datebegin])) AS 'Max_datebegin'
-  FROM [B2].[dbo].[dwh_La]
+  FROM table_name
   WHERE [portfolioType] ='Not Define'
   and product not like '%8%кл%'
 and product not like '%IsCard%'
