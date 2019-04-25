@@ -14,3 +14,7 @@ SELECT DISTINCT
        sys.objects o
          ON m.object_id = o.object_id
  WHERE m.definition Like '%y_products%';
+
+--table
+ SELECT * FROM INFORMATION_SCHEMA.TABLES 
+WHERE TABLE_NAME LIKE '%neg%'
